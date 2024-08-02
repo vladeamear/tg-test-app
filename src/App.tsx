@@ -1,5 +1,4 @@
 import { useLayoutEffect, useState } from "react";
-import "./App.css";
 
 declare global {
   interface Window {
@@ -28,14 +27,33 @@ function App() {
   return (
     <>
       {tgUser ? (
-        <h1>
-          Hello, {tgUser.first_name} {tgUser.last_name}{" "}
-          <span className="faded">({tgUser.id})</span>
-        </h1>
+        <>
+          <h1>
+            Hello, {tgUser.first_name} {tgUser.last_name}
+          </h1>
+          <img src={tgUser.photo_url} className="avatar" />
+          <table className="faded">
+            <tr>
+              <td className="bold">id</td>
+              <td>{tgUser.id}</td>
+            </tr>
+            <tr>
+              <td className="bold">username</td>
+              <td>{tgUser.username}</td>
+            </tr>
+            <tr>
+              <td className="bold">is_bot</td>
+              <td>{tgUser.is_bot}</td>
+            </tr>
+            <tr>
+              <td className="bold">is_premium</td>
+              <td>{tgUser.is_premium}</td>
+            </tr>
+          </table>
+        </>
       ) : (
         <h1>Hello World</h1>
       )}
-      <h2></h2>
       <h3>{count}</h3>
       <button onClick={inc}>+1</button>
       <button onClick={closeWebApp} className="outline">
