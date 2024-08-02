@@ -8,23 +8,34 @@ declare global {
 }
 
 function App() {
+  const tg = window.Telegram.WebApp;
+  const tgUser = window.Telegram.WebApp.initDataUnsafe.user;
+
   const [count, setCount] = useState(0);
   const inc = () => setCount((prev) => prev + 1);
 
-  const closeWebApp = () => window.Telegram.WebApp.close();
+  const closeWebApp = () => tg.close();
 
   useLayoutEffect(() => {
-    window.Telegram.WebApp.MainButton.onClick(inc);
-    window.Telegram.WebApp.MainButton.setText("+1");
-    window.Telegram.WebApp.MainButton.show();
+    tg.MainButton.onClick(inc);
+    tg.MainButton.setText("+1");
+    tg.MainButton.show();
 
-    window.Telegram.WebApp.BackButton.onClick(closeWebApp);
-    window.Telegram.WebApp.BackButton.show();
+    tg.BackButton.onClick(closeWebApp);
+    tg.BackButton.show();
   });
 
   return (
     <>
-      <h1>Hello World</h1>
+      {tgUser ? (
+        <h1>
+          Hello, {tgUser.first_name} {tgUser.last_name}{" "}
+          <span className="faded">({tgUser.id})</span>
+        </h1>
+      ) : (
+        <h1>Hello World</h1>
+      )}
+      <h2></h2>
       <h3>{count}</h3>
       <button onClick={inc}>+1</button>
       <button onClick={closeWebApp} className="outline">

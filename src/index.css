@@ -66,3 +66,7 @@ button.outline {
   background-color: transparent;
   color: var(--tg-theme-button-color, rgb(67, 128, 198));
 }
+
+.faded {
+  opacity: 0.65;
+}
