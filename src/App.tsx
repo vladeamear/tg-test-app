@@ -16,8 +16,10 @@ function App() {
   const closeWebApp = () => tg.close();
 
   useLayoutEffect(() => {
-    tg.MainButton.onClick(inc);
-    tg.MainButton.setText("+1");
+    tg.MainButton.onClick(() => {
+      tg.sendData(JSON.stringify({ count }));
+    });
+    tg.MainButton.setText("Отправить число в бот");
     tg.MainButton.show();
 
     tg.BackButton.onClick(closeWebApp);
