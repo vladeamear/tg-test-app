@@ -14,6 +14,7 @@ function App() {
   useLayoutEffect(() => {
     window.Telegram.WebApp.MainButton.onClick(inc);
     window.Telegram.WebApp.MainButton.setText("+1");
+    window.Telegram.WebApp.MainButton.show();
   });
 
   return (
