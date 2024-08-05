@@ -5,15 +5,15 @@ import { KeyboardButtonPage } from "./pages/KeyboardButtonPage";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/tg-test-app",
     element: <BotMenuButtonPage />,
   },
   {
-    path: "inline",
+    path: "/tg-test-app/inline",
     element: <InlineButtonPage />,
   },
   {
-    path: "keyboard",
+    path: "/tg-test-app/keyboard",
     element: <KeyboardButtonPage />,
   },
 ]);
